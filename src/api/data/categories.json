@@ -1,0 +1,78 @@
+[
+  {
+    "key": "fruits",
+    "value": "Frutas"
+  },
+  {
+    "key": "fats_without_pretein",
+    "value": "Grasas sin proteínas"
+  },
+  {
+    "key": "vegetables",
+    "value": "Verduras"
+  },
+  {
+    "key": "free_energy",
+    "value": "Libres en energía"
+  },
+  {
+    "key": "aoa_mbag",
+    "value": "AOA MBAG"
+  },
+  {
+    "key": "milk_with_sugar",
+    "value": "Leche con azúcar"
+  },
+  {
+    "key": "fat_free_sugars",
+    "value": "Azucares sin grasa"
+  },
+  {
+    "key": "sugars_with_fat",
+    "value": "Azucares con grasa"
+  },
+  {
+    "key": "fats_with_protein",
+    "value": "Grasas con proteínas"
+  },
+  {
+    "key": "alcohol",
+    "value": "Alcohol"
+  },
+  {
+    "key": "aoa_bag",
+    "value": "AOA BAG"
+  },
+  {
+    "key": "aoa_aag",
+    "value": "AOA AAG"
+  },
+  {
+    "key": "sg_cereals",
+    "value": "Cereales S/G"
+  },
+  {
+    "key": "legumes",
+    "value": "Leguminosas"
+  },
+  {
+    "key": "cg_cereals",
+    "value": "Cereales C/G"
+  },
+  {
+    "key": "aoa_mag",
+    "value": "AOA MAG"
+  },
+  {
+    "key": "skim_milk",
+    "value": "Leche descremada"
+  },
+  {
+    "key": "milk",
+    "value": "Leche entera"
+  },
+  {
+    "key": "semi_skimmed_milk",
+    "value": "Leche semidescremada"
+  }
+]
