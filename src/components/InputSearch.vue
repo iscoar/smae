@@ -1,10 +1,18 @@
 <script setup>
 const model = defineModel()
 
-const { data } = defineProps({
+const { data, placeholder } = defineProps({
   data: {
     type: Array,
     default: () => []
+  },
+  placeholder: {
+    type: String,
+    default: 'Escribe algo...'
+  },
+  id: {
+    type: String,
+    default: 'food'
   }
 })
 </script>
@@ -18,10 +26,10 @@ const { data } = defineProps({
           d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
       </svg>
     </div>
-    <input list="food" type="search"
+    <input :list="id" type="search"
       class="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-      placeholder="Escribe algo..." v-model="model" />
-    <datalist id="food">
+      :placeholder="placeholder" v-model="model" />
+    <datalist :id="id">
       <option v-for="food in data" :value="food"></option>
     </datalist>
   </div>
