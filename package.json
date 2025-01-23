@@ -9,11 +9,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@popperjs/core": "^2.11.8",
+    "apexcharts": "^4.3.0",
+    "axios": "^1.7.9",
     "flowbite": "^2.5.2",
     "pinia": "^2.2.4",
     "smae": "file:",
+    "v-calendar": "^3.1.2",
     "vue": "^3.5.10",
-    "vue-router": "^4.4.5"
+    "vue-router": "^4.4.5",
+    "vue3-apexcharts": "^1.8.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
