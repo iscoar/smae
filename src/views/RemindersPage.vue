@@ -182,66 +182,73 @@ const onClean = () => {
 
 <template>
     <div class="py-5">
-        <div class="flex gap-2">
-            <div class="w-1/3 [&>div]:flex [&>div]:items-center [&>div]:gap-2 flex flex-col gap-2">
-                <Alert class="w-full" v-if="has_error" :message="error_message" type="danger" />
-                <div>
-                    <label class="font-medium text-gray-900 dark:text-white">Nombre: </label>
-                    <InputSearch id="patients" class="w-full" placeholder="Escribe el nombre de un paciente..."
-                        v-model="patient" :data="patient_names" />
-                </div>
-                <div>
-                    <label class="font-medium text-gray-900 dark:text-white">Fecha: </label>
-                    <InputDate class="w-full" v-model="date" />
-                </div>
-                <div>
-                    <label class="font-medium text-gray-900 dark:text-white">Genero: </label>
-                    <DropDown id="genders" class="w-full" :options="genders" v-model="gender" />
-                </div>
-                <div>
-                    <label class="font-medium text-gray-900 dark:text-white">Tipo de comida: </label>
-                    <DropDown id="meal_types" class="w-full" :options="meal_types" v-model="meal_type" />
-                </div>
-                <div>
-                    <label class="font-medium text-gray-900 dark:text-white">Alimento: </label>
-                    <InputSearch id="food2" class="w-full" v-model="search" :data="food_names" @input="onSearchInput" />
-                </div>
-                <div>
-                    <label class="font-medium text-gray-900 dark:text-white">Equivalentes: </label>
-                    <InputNumber class="w-full" v-model="equivalent_value" placeholder="Equivalentes" />
-                </div>
-                <FoodCard :food="search_result" :hideFields="hide" />
-            </div>
-            <div class="flex flex-row gap-2  w-full">
-                <div class="flex flex-col gap-2 w-full">
-                    <div class="flex justify-between gap-2">
-                        <div>
-                            <FoodCard class="w-full" :food="food" :hideFields="[...hide, 'category', 'quantity', 'unit', 'gross_weight', 'net_weight', 'fiber']" />
-                            <CheckBoxButtons class="w-full" name="unit_type" :options="unit_types_options" v-model="unit_type_selected" />
-                        </div>
-                        <PieChart class="w-full" :data="pie_chart_data" />
+        <div class="flex flex-row gap-2">
+            <div class="flex flex-col gap-2">
+                <div class="[&>div]:flex [&>div]:flex-col [&>div]:gap-2 flex flex-wrap gap-2">
+                    <Alert class="w-full" v-if="has_error" :message="error_message" type="danger" />
+                    <div>
+                        <label class="font-medium text-gray-900 dark:text-white">Nombre: </label>
+                        <InputSearch id="patients" class="w-full min-w-72"
+                            placeholder="Escribe el nombre de un paciente..." v-model="patient" :data="patient_names" />
                     </div>
                     <div>
-                        <CheckBoxButtons class="w-full" name="macro_type" :options="macro_types_options" v-model="macro_type_selected" />
-                        <ColumnChart class="w-full mt-2" :labels="meal_types" :title="macro_chart_title" :data="column_chart_data" />
+                        <label class="font-medium text-gray-900 dark:text-white">Fecha: </label>
+                        <InputDate class="w-full" v-model="date" />
+                    </div>
+                    <div>
+                        <label class="font-medium text-gray-900 dark:text-white">Genero: </label>
+                        <DropDown id="genders" class="w-full" :options="genders" v-model="gender" />
+                    </div>
+                    <div>
+                        <label class="font-medium text-gray-900 dark:text-white">Tipo de comida: </label>
+                        <DropDown id="meal_types" class="w-full" :options="meal_types" v-model="meal_type" />
+                    </div>
+                    <div>
+                        <label class="font-medium text-gray-900 dark:text-white">Alimento: </label>
+                        <InputSearch id="food2" class="w-full min-w-96" v-model="search" :data="food_names"
+                            @input="onSearchInput" />
+                    </div>
+                    <div>
+                        <label class="font-medium text-gray-900 dark:text-white">Equivalentes: </label>
+                        <InputNumber class="w-full" v-model="equivalent_value" placeholder="Equivalentes" />
                     </div>
                 </div>
-                <div class="max-w-xl flex flex-col gap-2">
-                    <BaseButton class="w-full" @click="onSave">
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                            viewBox="0 0 24 24">
-                            <path fill-rule="evenodd"
-                                d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7.414A2 2 0 0 0 20.414 6L18 3.586A2 2 0 0 0 16.586 3H5Zm3 11a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6H8v-6Zm1-7V5h6v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"
-                                clip-rule="evenodd" />
-                            <path fill-rule="evenodd" d="M14 17h-4v-2h4v2Z" clip-rule="evenodd" />
-                        </svg>
-                        Guardar
-                    </BaseButton>
-                    <Calendar v-if="reminder_dates.length >= 1" class="w-full mx-auto" borderless is-dark transparent expanded
-                        :attributes="attrs" :first-day-of-week="1" color="lilac" />
-                    <TableReminder :reminders="reminders" />
+                <div class="flex flex-row gap-2  w-full">
+                    <FoodCard class="min-w-60" :food="search_result" :hideFields="hide" />
+                    <div class="flex flex-col gap-2 w-full">
+                        <div class="flex justify-between gap-2">
+                            <div class="w-full">
+                                <FoodCard class="w-full" :food="food"
+                                    :hideFields="[...hide, 'category', 'quantity', 'unit', 'gross_weight', 'net_weight', 'fiber']" />
+                                <CheckBoxButtons class="w-full" name="unit_type" :options="unit_types_options"
+                                    v-model="unit_type_selected" />
+                            </div>
+                            <PieChart class="w-full" :data="pie_chart_data" />
+                        </div>
+                    </div>
                 </div>
+                <div>
+                    <CheckBoxButtons class="w-full" name="macro_type" :options="macro_types_options"
+                        v-model="macro_type_selected" />
+                    <ColumnChart class="w-full mt-2" :labels="meal_types" :title="macro_chart_title"
+                        :data="column_chart_data" />
+                </div>
+            </div>
+            <div class="max-w-xl flex flex-col gap-2">
+                <BaseButton class="w-full" @click="onSave">
+                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
+                        viewBox="0 0 24 24">
+                        <path fill-rule="evenodd"
+                            d="M5 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7.414A2 2 0 0 0 20.414 6L18 3.586A2 2 0 0 0 16.586 3H5Zm3 11a1 1 0 0 1 1-1h6a1 1 0 0 1 1 1v6H8v-6Zm1-7V5h6v2a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1Z"
+                            clip-rule="evenodd" />
+                        <path fill-rule="evenodd" d="M14 17h-4v-2h4v2Z" clip-rule="evenodd" />
+                    </svg>
+                    Guardar
+                </BaseButton>
+                <Calendar v-if="reminder_dates.length >= 1" class="w-full mx-auto" borderless is-dark transparent
+                    expanded :attributes="attrs" :first-day-of-week="1" color="lilac" />
+                <TableReminder :reminders="reminders" />
             </div>
         </div>
         <!-- <Toast message="Recordatorio guardado correctamente" type="success" /> -->
