@@ -1,6 +1,6 @@
 import { defineStore, storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import { getAllFood } from '../api/foodService'
+import { getAllFoodByName, getAllFoodById } from '../api/foodService'
 import { equivalentStore } from './equivalentStore'
 
 export const foodStore = defineStore('food', () => {
@@ -8,14 +8,8 @@ export const foodStore = defineStore('food', () => {
   const { equivalent_value } = storeToRefs(eqStore) 
   const food = ref([])
   const search = ref('')
-
-  const search_result = computed(() => {
-    const result = food.value.find(({ name }) => clean_text(name) === clean_text(search.value))
-
-    if (result === undefined) return {}
-
-    return mapResult(result)
-  })
+  const search_result = ref({})
+  const first_search = ref({})
   
   const food_names = computed(() => food.value.map(({ name }) => name))
 
@@ -23,12 +17,30 @@ export const foodStore = defineStore('food', () => {
     return text.trim().toLowerCase()
   }
 
-  function fetchFood() {
-    const data = getAllFood()
+  async function searchFood() {
+    const { data } = await getAllFoodByName(search.value)
     food.value = data
   }
 
-  fetchFood()
+  async function find() {
+    const result = food.value.find(({ name }) => clean_text(name) === clean_text(search.value))
+
+    if (result === undefined) return
+
+    const _result = await searhFoodInfo(result.id)
+
+    search_result.value = mapResult(_result)
+    first_search.value = _result
+  }
+
+  async function searhFoodInfo(id) {
+    const { data } = await getAllFoodById(id)
+    return data
+  }
+
+  function calculate() {
+    search_result.value = mapResult(first_search.value)
+  }
 
   function mapResult(result) {
     const equivalent = equivalent_value.value ?? 1
@@ -36,7 +48,7 @@ export const foodStore = defineStore('food', () => {
     return {
       ...result,
       equivalent,
-      quantity: result.quantity * equivalent,
+      quantity: result.suggested_quantity * equivalent,
       gross_weight: result.gross_weight * equivalent,
       net_weight: result.net_weight * equivalent,
       energy: result.energy * equivalent,
@@ -67,5 +79,5 @@ export const foodStore = defineStore('food', () => {
     }
   }
 
-  return { search, search_result, food_names }
+  return { search, search_result, food_names, searchFood, find, calculate }
 })

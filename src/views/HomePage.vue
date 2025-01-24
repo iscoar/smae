@@ -9,6 +9,7 @@ import { foodStore } from '../store/foodStore'
 import { equivalentStore } from '../store/equivalentStore'
 import { storeToRefs } from 'pinia'
 import { mockDBStore } from '../store/mockDBStore'
+import { ref, watch } from 'vue'
 
 const eqStore = equivalentStore()
 const store = foodStore()
@@ -16,7 +17,28 @@ const dbStore = mockDBStore()
 const { equivalents, equivalent_value } = storeToRefs(eqStore)
 const { search, food_names, search_result } = storeToRefs(store)
 const { findCategory, setEquivalent, resetEquivalents } = eqStore
-const { saveRegister, deleteRegisters } = dbStore 
+const { saveRegister, deleteRegisters } = dbStore
+const { searchFood, find, calculate } = store
+const searchTimeout = ref(null)
+
+watch(search, () => {
+  find()
+})
+
+watch(equivalent_value, () => {
+  if (!search_result.value) return
+
+  calculate()
+})
+
+const onSearchInput = () => {
+  if (search.value.length < 2) return
+  if (searchTimeout.value) clearTimeout(searchTimeout.value)
+  searchTimeout.value = setTimeout(() => {
+    if (search.value.length == 0) return
+    searchFood()
+  }, 500)
+}
 
 const onSave = () => {
   if (!equivalent_value.value) return
@@ -35,7 +57,7 @@ const onClean = () => {
 <template>
   <div>
     <div class="grid grid-cols-2 gap-2 my-5">
-      <InputSearch class="w-full" v-model="search" :data="food_names" />
+      <InputSearch class="w-full" v-model="search" :data="food_names" @input="onSearchInput" />
       <div class="flex justify-between gap-2">
         <InputNumber class="w-full" placeholder="Equivalentes" v-model="equivalent_value" />
         <BaseButton @click="onSave">
