@@ -187,34 +187,34 @@ const onClean = () => {
                 <div class="[&>div]:flex [&>div]:flex-col [&>div]:gap-2 flex flex-wrap gap-2">
                     <Alert class="w-full" v-if="has_error" :message="error_message" type="danger" />
                     <div>
-                        <label class="font-medium text-gray-900 dark:text-white">Nombre: </label>
+                        <label class="font-medium text-gray-900">Nombre: </label>
                         <InputSearch id="patients" class="w-full min-w-72"
                             placeholder="Escribe el nombre de un paciente..." v-model="patient" :data="patient_names" />
                     </div>
                     <div>
-                        <label class="font-medium text-gray-900 dark:text-white">Fecha: </label>
+                        <label class="font-medium text-gray-900">Fecha: </label>
                         <InputDate class="w-full" v-model="date" />
                     </div>
                     <div>
-                        <label class="font-medium text-gray-900 dark:text-white">Genero: </label>
+                        <label class="font-medium text-gray-900">Genero: </label>
                         <DropDown id="genders" class="w-full" :options="genders" v-model="gender" />
                     </div>
                     <div>
-                        <label class="font-medium text-gray-900 dark:text-white">Tipo de comida: </label>
+                        <label class="font-medium text-gray-900">Tipo de comida: </label>
                         <DropDown id="meal_types" class="w-full" :options="meal_types" v-model="meal_type" />
                     </div>
                     <div>
-                        <label class="font-medium text-gray-900 dark:text-white">Alimento: </label>
+                        <label class="font-medium text-gray-900">Alimento: </label>
                         <InputSearch id="food2" class="w-full min-w-96" v-model="search" :data="food_names"
                             @input="onSearchInput" />
                     </div>
                     <div>
-                        <label class="font-medium text-gray-900 dark:text-white">Equivalentes: </label>
+                        <label class="font-medium text-gray-900">Equivalentes: </label>
                         <InputNumber class="w-full" v-model="equivalent_value" placeholder="Equivalentes" />
                     </div>
                 </div>
                 <div class="flex flex-row gap-2  w-full">
-                    <FoodCard class="min-w-60" :food="search_result" :hideFields="hide" />
+                    <FoodCard class="min-w-60" :food="search_result" :hideFields="hide" color="bg-[#DDA0DD]" />
                     <div class="flex flex-col gap-2 w-full">
                         <div class="flex justify-between gap-2">
                             <div class="w-full">
@@ -236,7 +236,7 @@ const onClean = () => {
             </div>
             <div class="max-w-xl flex flex-col gap-2">
                 <BaseButton class="w-full" @click="onSave">
-                    <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
+                    <svg class="w-6 h-6 text-gray-800" aria-hidden="true"
                         xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
                         viewBox="0 0 24 24">
                         <path fill-rule="evenodd"
@@ -246,7 +246,7 @@ const onClean = () => {
                     </svg>
                     Guardar
                 </BaseButton>
-                <Calendar v-if="reminder_dates.length >= 1" class="w-full mx-auto" borderless is-dark transparent
+                <Calendar v-if="reminder_dates.length >= 1" class="w-full mx-auto" borderless transparent
                     expanded :attributes="attrs" :first-day-of-week="1" color="lilac" />
                 <TableReminder :reminders="reminders" />
             </div>

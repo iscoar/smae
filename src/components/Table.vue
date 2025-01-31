@@ -19,8 +19,8 @@ function convertNumber(number) {
 
 <template>
   <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-      <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-900">
+      <thead class="text-xs text-gray-900 uppercase bg-[#76d7c4]">
         <tr>
           <th scope="col" class="px-6 py-3">
             Alimento
@@ -110,8 +110,8 @@ function convertNumber(number) {
       </thead>
       <tbody>
         <tr v-for="food in data"
-          class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+          class="bg-[#f2f3f4] border-b dark:border-gray-700 hover:bg-[#f2f3f4]/[.5]">
+          <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
             {{ food.name }}
           </th>
           <td class="px-6 py-4">{{ food.equivalent }}</td>
@@ -144,7 +144,7 @@ function convertNumber(number) {
         </tr>
       </tbody>
       <tfoot>
-        <tr class="font-semibold text-gray-900 dark:text-white">
+        <tr class="bg-[#f2f3f4] font-semibold text-gray-900">
           <th scope="row" class="px-6 py-3 text-base">Total</th>
           <td class="px-6 py-3">{{ convertNumber(totals.equivalent) }}</td>
           <td class="px-6 py-3"></td>

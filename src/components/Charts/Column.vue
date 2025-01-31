@@ -29,6 +29,11 @@ const options = ref({
   },
   xaxis: {
     categories: labels
+  },
+  dataLabels: {
+    style: {
+      colors: ['black']
+    }
   }
 })
 const numberFormat = (value) => {
@@ -48,9 +53,9 @@ watch(() => data, (newData) => {
 
 <template>
 
-  <div class="w-full bg-white rounded-lg shadow dark:bg-gray-800 p-4 md:p-6">
+  <div class="w-full rounded-lg shadow bg-[#f2f3f4] p-4 md:p-6">
     <div class="flex justify-center pb-4 mb-4 border-b border-gray-200 dark:border-gray-700">
-      <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">
+      <h5 class="leading-none text-2xl font-bold text-gray-900 pb-1">
         {{ title }}
       </h5>
     </div>

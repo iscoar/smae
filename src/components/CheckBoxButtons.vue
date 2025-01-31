@@ -13,7 +13,7 @@ defineProps({
             <input type="radio" :id="option.value" :name="name" :value="option.value" class="hidden peer"
                 v-model="model" />
             <label :for="option.value"
-                class="flex items-center justify-center w-full h-full p-5 text-gray-500 bg-white border border-gray-200 rounded-lg cursor-pointer dark:hover:text-gray-300 dark:border-gray-700 dark:peer-checked:text-[#C8A2C8] peer-checked:border-[#C8A2C8] peer-checked:text-[#C8A2C8] hover:text-gray-600 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700">
+                class="flex items-center justify-center w-full h-full p-5 text-gray-900 bg-[#eafaf1] border border-gray-200 rounded-lg cursor-pointer dark:border-gray-700 dark:peer-checked:text-[#7c597c] peer-checked:border-[#7c597c] peer-checked:text-[#eafaf1] hover:text-gray-700 hover:bg-[#eafaf1]/[.5]">
                 <div class="block">
                     <div class="w-full text-md font-semibold">{{ option.name }}</div>
                 </div>
