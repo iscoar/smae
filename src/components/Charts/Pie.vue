@@ -14,7 +14,7 @@ const options = ref({
     id: 'vuechart-example2',
     type: type.value
   },
-  colors: ['#2874a6', '#FF69B4', '#f1c40f'],
+  colors: ['#00CED1', '#FF69B4', '#f1c40f'],
   labels: ['Proteinas', 'Carbohidratos', 'Lípidos'],
   legend: {
     position: 'bottom',
