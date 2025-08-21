@@ -42,7 +42,7 @@ function convertNumber(number) {
           </th>
           <td class="px-6 py-4">{{ food.equivalents }}</td>
           <td class="px-6 py-4">{{ food.category }}</td>
-          <td class="px-6 py-4">{{ food.quantity }}</td>
+          <td class="px-6 py-4">{{ typeof food.quantity === 'number' ? food.quantity.toFixed(2) : food.quantity }}</td>
           <td class="px-6 py-4">{{ food.unit }}</td>
         </tr>
       </tbody>
