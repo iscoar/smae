@@ -47,6 +47,7 @@ const {
     unit_types_options,
     macro_types_options,
     onSearchInput,
+    onSearchInputPatient,
     onSave,
     onDayClick
 } = useReminders()
@@ -70,6 +71,7 @@ const {
                     :meal_types="meal_types"
                     :food_names="food_names"
                     @onSearchInput="onSearchInput"
+                    @onSearchInputPatient="onSearchInputPatient"
                 />
                 <div class="flex flex-row gap-2  w-full">
                     <FoodCard class="min-w-60" :food="search_result" :hideFields="hide" color="bg-[#DDA0DD]" :fields="food_props" />

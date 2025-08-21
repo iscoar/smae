@@ -17,7 +17,7 @@ export const useReminders = () => {
     const { search, food_names, search_result, food_props } = storeToRefs(store)
     const { macro_chart_title, column_chart_data, pie_chart_data, food } = storeToRefs(chartStore)
     const { unit_type_selected, macro_type_selected, unit_types_options, macro_types_options } = storeToRefs(chartStore)
-    const { loadReminders, loadRemindersDates, registerReminder } = reminderStore
+    const { loadReminders, loadRemindersDates, registerReminder, searchPatients } = reminderStore
     const { searchFood, find, calculate } = store
     const { loadColumnChartData, loadPieChartData } = chartStore
     const searchTimeout = ref(null)
@@ -88,6 +88,15 @@ export const useReminders = () => {
         searchTimeout.value = setTimeout(() => {
             if (search.value.length == 0) return
             searchFood()
+        }, 200)
+    }
+    
+    const onSearchInputPatient = () => {
+        if (patient.value.length < 2) return
+        if (searchTimeout.value) clearTimeout(searchTimeout.value)
+        searchTimeout.value = setTimeout(() => {
+            if (patient.value.length == 0) return
+            searchPatients()
         }, 200)
     }
 
@@ -212,6 +221,7 @@ export const useReminders = () => {
         onSearchInput,
         onSave,
         onDayClick,
-        onClean
+        onClean,
+        onSearchInputPatient
     }
 }

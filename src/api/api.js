@@ -1,7 +1,8 @@
 import axios from "axios"
 
 const api = axios.create({
-    baseURL: "https://nutristern-api.vercel.app"
+    baseURL: "http://localhost:3010"
+    // baseURL: "https://nutristern-api.vercel.app"
 })
 
 export default api

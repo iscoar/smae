@@ -11,7 +11,7 @@ const {
     food_names
 } = defineProps(['patient_names', 'genders', 'meal_types', 'food_names'])
 
-const emit = defineEmits(['onSearchInput'])
+const emit = defineEmits(['onSearchInput', 'onSearchInputPatient'])
 
 const patient = defineModel('patient')
 const date = defineModel('date')
@@ -29,6 +29,16 @@ const onFoodSelect = (value) => {
     search.value = value
     emit('onSearchInput')
 }
+
+const onSearchInputPatient = (value) => {
+    patient.name = value
+    emit('onSearchInputPatient')
+}
+
+const onPatientSelect = (value) => {
+    patient.name = value
+    emit('onSearchInputPatient')
+}
 </script>
 
 <template>
@@ -36,7 +46,7 @@ const onFoodSelect = (value) => {
         <div>
             <label class="font-medium text-gray-900">Nombre: </label>
             <InputSearch id="patients" class="w-full min-w-72" placeholder="Escribe el nombre de un paciente..."
-                v-model="patient" :data="patient_names" />
+                v-model="patient" :data="patient_names" @input="onSearchInputPatient" @select="onPatientSelect" />
         </div>
         <div>
             <label class="font-medium text-gray-900">Fecha: </label>

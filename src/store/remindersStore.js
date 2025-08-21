@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
 import { getRemindersByFilter, getRemindersDates, saveReminder } from '../api/reminderService';
-import { getAllPatients } from '../api/patientService';
+import { getAllPatients, getAllPatientsByName } from '../api/patientService';
 
 export const remindersStore = defineStore('reminders', () => {
     const patient = ref('')
@@ -24,7 +24,7 @@ export const remindersStore = defineStore('reminders', () => {
 
     async function loadPatients() {
         const { data } = await getAllPatients()
-        patients.value = data
+        patients.value = data.data
     }
 
     async function loadReminders() {
@@ -43,6 +43,11 @@ export const remindersStore = defineStore('reminders', () => {
 
     async function registerReminder(reminder) {
         return saveReminder(reminder)
+    }
+
+    async function searchPatients() {
+        const { data } = await getAllPatientsByName(patient.value)
+        patients.value = data.data
     }
 
     loadPatients()
@@ -65,5 +70,6 @@ export const remindersStore = defineStore('reminders', () => {
         registerReminder,
         loadReminders,
         loadRemindersDates,
+        searchPatients
     };
 });
