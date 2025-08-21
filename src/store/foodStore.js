@@ -1,6 +1,6 @@
 import { defineStore, storeToRefs } from 'pinia'
 import { computed, ref } from 'vue'
-import { getAllFoodByName, getAllFoodById } from '../api/foodService'
+import { getAllFoodByName, getAllFoodById, foodProps } from '../api/foodService'
 import { equivalentStore } from './equivalentStore'
 
 export const foodStore = defineStore('food', () => {
@@ -10,6 +10,7 @@ export const foodStore = defineStore('food', () => {
   const search = ref('')
   const search_result = ref({})
   const first_search = ref({})
+  const food_props = ref(foodProps)
   
   const food_names = computed(() => food.value.map(({ name }) => name))
 
@@ -19,7 +20,7 @@ export const foodStore = defineStore('food', () => {
 
   async function searchFood() {
     const { data } = await getAllFoodByName(search.value)
-    food.value = data
+    food.value = data.data
   }
 
   async function find() {
@@ -28,14 +29,15 @@ export const foodStore = defineStore('food', () => {
     if (result === undefined) return
 
     const _result = await searhFoodInfo(result.id)
+    const resultValue = _result[0]
 
-    search_result.value = mapResult(_result)
-    first_search.value = _result
+    search_result.value = mapResult(resultValue)
+    first_search.value = resultValue
   }
 
   async function searhFoodInfo(id) {
     const { data } = await getAllFoodById(id)
-    return data
+    return data.data
   }
 
   function calculate() {
@@ -79,5 +81,5 @@ export const foodStore = defineStore('food', () => {
     }
   }
 
-  return { search, search_result, food_names, searchFood, find, calculate }
+  return { search, search_result, food_props, food_names, searchFood, find, calculate }
 })

@@ -49,5 +49,5 @@ export const equivalentStore = defineStore('equivalent', () => {
     initEquivalents()
   }
 
-  return { equivalents, equivalent_value, setEquivalent, findCategory, resetEquivalents }
+  return { equivalents, equivalent_value, categories, setEquivalent, findCategory, resetEquivalents }
 })
