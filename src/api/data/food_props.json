@@ -1,0 +1,106 @@
+[
+    {
+        "key": "category",
+        "label": "Categoria"
+    },
+    {
+        "key": "quantity",
+        "label": "Cantidad"
+    },
+    {
+        "key": "unit",
+        "label": "Unidad"
+    },
+    {
+        "key": "gross_weight",
+        "label": "Peso bruto, g"
+    },
+    {
+        "key": "net_weight",
+        "label": "Peso neto, g"
+    },
+    {
+        "key": "energy",
+        "label": "Energía"
+    },
+    {
+        "key": "proteins",
+        "label": "Proteínas"
+    },
+    {
+        "key": "lipids",
+        "label": "Lípidos"
+    },
+    {
+        "key": "carbohydrates",
+        "label": "Carbohidratos"
+    },
+    {
+        "key": "saturated_fa",
+        "label": "AG saturados (g)"
+    },
+    {
+        "key": "monounsaturated_fa",
+        "label": "AG monoinsaturados (g)"
+    },
+    {
+        "key": "polyunsaturated_fa",
+        "label": "AG poliinsaturados (g)"
+    },
+    {
+        "key": "cholesterol",
+        "label": "Colesterol (mg)"
+    },
+    {
+        "key": "sugar",
+        "label": "Azúcar (g)"
+    },
+    {
+        "key": "fiber",
+        "label": "Fibra, g"
+    },
+    {
+        "key": "vitamin_a",
+        "label": "Vitamina A (mg RE)"
+    },
+    {
+        "key": "ascorbic_acid",
+        "label": "Ácido ascórbico (mg)"
+    },
+    {
+        "key": "folic_acid",
+        "label": "Acido Fólico (mg)"
+    },
+    {
+        "key": "calcium",
+        "label": "Calcio (mg)"
+    },
+    {
+        "key": "iron",
+        "label": "Hierro (mg)"
+    },
+    {
+        "key": "potassium",
+        "label": "Potasio (mg)"
+    },
+    {
+        "key": "sodium",
+        "label": "Sodio (mg)"
+    },
+    {
+        "key": "phosphorus",
+        "label": "Fósforo (mg)"
+    },
+    {
+        "key": "ethanol",
+        "label": "Etanol (g)"
+    },
+    {
+        "key": "ig",
+        "label": "IG"
+    },
+    {
+        "key": "glycemic_load",
+        "label": "Carga glicémica"
+    }
+]
