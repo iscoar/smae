@@ -52,7 +52,7 @@ const filteredData = computed(() => {
 })
 
 // ✅ mostrar lista solo si hay focus y resultados
-const showResults = computed(() => focused.value && showList.value && filteredData.value.length > 0)
+const showResults = computed(() => focused.value && filteredData.value.length > 0)
 
 const onInput = (event) => {
   const value = event.target.value
